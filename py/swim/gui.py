@@ -131,10 +131,10 @@ class Swimmers(App):
         html = swimdata.create_html(data)
         
         # Clear the index.html file by opening it with write permissions and then closing it again.
-        open("index.html", "w").close()
+        open("templates/index.html", "w").close()
 
         # Open the file and write the HTML data to it.
-        with open("index.html", "w") as f:
+        with open("templates/index.html", "w") as f:
             f.write(html)
 
         # Attempt to open in new tab, if none found, open browser and open in new tab.
