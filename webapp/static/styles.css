@@ -1,0 +1,26 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container>select {
+    padding: 10px 200px;
+    font-size: large;
+    border: none;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+}
