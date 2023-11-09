@@ -1,0 +1,2 @@
+To map the time data to a range: https://james-ramsden.com/map-a-value-from-one-number-scale-to-another-formula-and-c-code/
+TCSS Code used for exit screen: https://textual.textualize.io/guide/CSS/ 

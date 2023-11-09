@@ -1,0 +1,115 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+            }
+
+            .bars {
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .bar {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                
+                @media only screen and (max-width: 1000px) {
+                    min-width: 70%;
+                    width: 80%;
+                }
+
+                @media only screen and (max-width: 650px) {
+                    width: 100%;
+                }
+
+                min-width: 50%;
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <div class="bars">
+    <h1>Katie, 9</h1><h2>100m Back</h2>
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="497.23" height="50" fill="red" />
+                </svg>
+                <p>1:33.36</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="487.43" height="50" fill="red" />
+                </svg>
+                <p>1:31.52</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="469.22" height="50" fill="red" />
+                </svg>
+                <p>1:28.10</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="497.28" height="50" fill="red" />
+                </svg>
+                <p>1:33.37</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="494.73" height="50" fill="red" />
+                </svg>
+                <p>1:32.89</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="497.34" height="50" fill="red" />
+                </svg>
+                <p>1:33.38</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="490.15" height="50" fill="red" />
+                </svg>
+                <p>1:32.03</p>
+            </div>
+            
+            <div class="bar">
+                <svg width="500" height="50">
+                    <rect x="0" y="0" width="493.77" height="50" fill="red" />
+                </svg>
+                <p>1:32.71
+</p>
+            </div>
+            
+        </div>
+    </body>
+    </html>
+    

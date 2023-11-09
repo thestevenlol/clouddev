@@ -1,6 +1,4 @@
-# Written by Jack Foley, C00274246
-
-def map_value(v, f_min, f_max, t_min, t_max):
+def convert2range(v, f_min, f_max, t_min, t_max):
     """Given a value (v) in the range f_min-f_max, convert the value
     to its equivalent value in the range t_min-t_max.
 
