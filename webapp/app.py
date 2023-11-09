@@ -1,12 +1,13 @@
-from flask import Flask, render_template  # from module import Class.
-
+from flask import Flask, render_template, request, session  # from module import Class.
 
 import hfpy_utils
 import swim_utils
 import os
+import secrets
 
 
 app = Flask(__name__)
+app.secret_key = str(secrets.token_hex)
 
 """
 Requirements:
@@ -34,8 +35,43 @@ def index():
     return render_template("index.html", title="Swimmer Charts", swimmers=swimmers)
 
 
-@app.get("/chart")
+@app.post("/events")
+def events():
+    session["swimmer"] = request.form["swimmers"]
+
+    files = os.listdir("swimdata")
+    files.remove(".DS_Store")
+
+    swimmer_files = []
+    for f in files:
+        if session["swimmer"] in f:
+            swimmer_files.append(f.removesuffix(".txt"))
+
+    events = []
+    for f in swimmer_files:
+        event = f"{f.split('-')[2]} {f.split('-')[3]}"
+        events.append(event)
+
+    return render_template("events.html", swimmer=session["swimmer"], events=events)
+
+
+@app.post("/chart")
 def display_chart():
+    session["event"] = request.form["events"]
+
+    files = os.listdir("swimdata")
+    files.remove(".DS_Store")
+
+    event = session["event"]
+    event = event.replace(" ", "-")
+
+    swimmer = session["swimmer"]
+
+    filename = ""
+    for f in files:
+        if swimmer in f and event in f:
+            filename = str(f)
+
     (
         name,
         age,
@@ -44,7 +80,7 @@ def display_chart():
         the_times,
         converts,
         the_average,
-    ) = swim_utils.get_swimmers_data("Katie-9-100m-Free.txt")
+    ) = swim_utils.get_swimmers_data(filename)
 
     the_title = f"{name} (Under {age}) {distance} {stroke}"
     from_max = max(converts) + 50

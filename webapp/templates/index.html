@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-
-<body>
-    <div class="container">
-        <select name="swimmers" id="swimmers" onchange="swimmersChange()">
-            {% for swimmer in swimmers %}
-            <option value="{{swimmer}}">{{swimmer}}</option>
-            {% endfor %}
-        </select>
-    </div>
-</body>
-
-</html>
+{% block container %}
+<form method="POST" action="/events">
+    <select name="swimmers" id="swimmers" onchange="swimmersChange()">
+        {% for swimmer in swimmers %}
+        <option value="{{swimmer}}">{{swimmer}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Show Events">
+</form>
+{% endblock %}
