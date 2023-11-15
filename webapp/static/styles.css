@@ -36,7 +36,8 @@ html {
     cursor: pointer;
 }
 
-#event-swimmer-title {
+#event-swimmer-title,
+#index-title {
     font-family: 'Oswald';
     margin-bottom: 50px;
 }

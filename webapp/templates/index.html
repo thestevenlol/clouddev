@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block container %}
+<h1 id="index-title">Choose a Swimmer</h1>
 <form method="POST" action="/events">
     <select name="swimmers" id="swimmers" onchange="swimmersChange()">
         {% for swimmer in swimmers %}

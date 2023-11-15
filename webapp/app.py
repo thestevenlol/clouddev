@@ -21,7 +21,8 @@ Requirements:
 @app.get("/")
 def index():
     files = os.listdir("swimdata")
-    files.remove(".DS_Store")
+    if ".DS_Store" in files:
+        files.remove(".DS_Store")
     swimmers = []
     for f in files:
         f.removesuffix(".txt")
@@ -40,7 +41,8 @@ def events():
     session["swimmer"] = request.form["swimmers"]
 
     files = os.listdir("swimdata")
-    files.remove(".DS_Store")
+    if ".DS_Store" in files:
+        files.remove(".DS_Store")
 
     swimmer_files = []
     for f in files:
@@ -60,7 +62,8 @@ def display_chart():
     session["event"] = request.form["events"]
 
     files = os.listdir("swimdata")
-    files.remove(".DS_Store")
+    if ".DS_Store" in files:
+        files.remove(".DS_Store")
 
     event = session["event"]
     event = event.replace(" ", "-")
@@ -81,6 +84,8 @@ def display_chart():
         converts,
         the_average,
     ) = swim_utils.get_swimmers_data(filename)
+
+    the_times.reverse()
 
     the_title = f"{name} (Under {age}) {distance} {stroke}"
     from_max = max(converts) + 50
