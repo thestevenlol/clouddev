@@ -1,11 +1,11 @@
 from DBcm import UseDatabase
 import os
+from datetime import datetime, timedelta
 
-datasets = ("dataset_1", "dataset_2")
 dataset_path = r""
 
 
-def ingest(dataset):
+def ingest(dataset, debug):
     config = {
         "host": "localhost",
         "database": "swimmers_webapp",
@@ -19,42 +19,58 @@ def ingest(dataset):
 
     # start db connection
     with UseDatabase(config) as cursor:
-        _SQL = """delete from swimmers where id > 0;"""
-        cursor.execute(_SQL)
+        if debug:
+            _SQL = """delete from times where swimmer_id > 0;"""
+            cursor.execute(_SQL)
 
-        _SQL = """alter table swimmers auto_increment = 1;"""
-        cursor.execute(_SQL)
+            _SQL = """delete from swimmers where id > 0;"""
+            cursor.execute(_SQL)
 
-        _SQL = """delete from events where id > 0;"""
-        cursor.execute(_SQL)
+            _SQL = """alter table swimmers auto_increment = 1;"""
+            cursor.execute(_SQL)
 
-        _SQL = """alter table events auto_increment = 1;"""
-        cursor.execute(_SQL)
+            _SQL = """delete from events where id > 0;"""
+            cursor.execute(_SQL)
+
+            _SQL = """alter table events auto_increment = 1;"""
+            cursor.execute(_SQL)
+
+        swimmer_table_data = set()
+        events_table_data = set()
 
         names = []
-        distances = []
-        strokes = []
+        events = set()
 
-        for f in files:
-            f = f.removesuffix(".txt")
-            split_text = f.split("-")
-            name = split_text[0]
-            age = int(split_text[1])
 
-            distance = int(split_text[2].removesuffix("m"))
-            stroke = split_text[3]
 
-            if distance not in distances:
-                distances.append(distance)
-                if stroke not in strokes:
-                    strokes.append(stroke)
-                    _SQL = f"""insert into events (distance, stroke) values ({distance}, '{stroke}')"""
-                    cursor.execute(_SQL)
+            # if (distance, stroke) not in events:
+            #     events.add((distance, stroke))
+            #     _SQL = f"""insert into events (distance, stroke) values ({distance}, '{stroke}');"""
+            #     cursor.execute(_SQL)
+            #
+            # if name not in names:
+            #     names.append(name)
+            #     _SQL = f"""insert into swimmers (name, age) values ('{name}', {age});"""
+            #     cursor.execute(_SQL)
+            #
+            # _SQL = f"""select id from swimmers where name = '{name}' and age = {int(age)};"""
+            # cursor.execute(_SQL)
+            # swimmer_id = cursor.fetchone()[0]
+            # if swimmer_id is None:
+            #     pass
+            #
+            # _SQL = f"""select id from events where distance = {distance} and stroke = '{stroke}';"""
+            # cursor.execute(_SQL)
+            # event_id = cursor.fetchone()[0]
+            #
+            # lines = read_file(dataset, f"{f}.txt")
+            # for line in lines:
+            #     line = line.removesuffix("\n")
+            #     times = line.split(",")
+            #     for time in times:
+            #         _SQL = f"""insert into times (swimmer_id, event_id, time) values ({swimmer_id}, {event_id}, '{time}');"""
+            #         cursor.execute(_SQL)
 
-            if name not in names:
-                names.append(name)
-                _SQL = f"""insert into swimmers (name, age) values ('{name}', {age});"""
-                cursor.execute(_SQL)
 
 
 def get_files(dataset):
@@ -68,4 +84,4 @@ def read_file(dataset, filename):
         return f.readlines()
 
 
-ingest("dataset_1")
+ingest("dataset_2", True)

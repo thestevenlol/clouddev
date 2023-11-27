@@ -13,8 +13,8 @@ create table events (
 create table times (
     swimmer_id int not null,
     event_id int not null,
-    time int not null,
-    timestamp datetime not null,
+    time varchar(10) not null,
+    ts timestamp not null default current_timestamp,
     foreign key (swimmer_id) references swimmers(id),
     foreign key (event_id) references events(id)
 );
