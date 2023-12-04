@@ -16,5 +16,9 @@ create table times (
     time varchar(10) not null,
     ts timestamp not null default current_timestamp,
     foreign key (swimmer_id) references swimmers(id),
-    foreign key (event_id) references events(id)
+    foreign key (event_id) references events(id),
+    unique (swimmer_id, event_id, time)
 );
+
+ALTER TABLE swimmers ADD UNIQUE (name, age);
+ALTER TABLE events ADD UNIQUE (distance, stroke);
