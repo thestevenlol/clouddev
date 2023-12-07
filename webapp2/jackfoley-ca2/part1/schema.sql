@@ -1,3 +1,5 @@
+create database swimmers_webapp;
+
 create table swimmers (
     id int not null primary key auto_increment,
     name varchar(50) not null,
@@ -19,5 +21,5 @@ create table times (
     ts timestamp not null default current_timestamp,
     foreign key (swimmer_id) references swimmers(id),
     foreign key (event_id) references events(id),
-    unique (swimmer_id, event_id, time)
+    unique (swimmer_id, event_id, time, ts)
 );

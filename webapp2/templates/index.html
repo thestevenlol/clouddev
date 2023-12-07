@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Select a Swim Session</h1>
     <div id="form_container">
-        <form hx-post="/get_swimmers">
+        <form method="post" action="/get_swimmers">
             <label>
             <span>Choose a Date</span>
             <select id="itemSelect" name="date">

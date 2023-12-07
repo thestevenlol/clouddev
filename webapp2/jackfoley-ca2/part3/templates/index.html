@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Select a Swim Session</h1>
+    <div id="form_container">
+        <form hx-post="/get_swimmers">
+            <label>
+            <span>Choose a Date</span>
+            <select id="itemSelect" name="date">
+                {% for item in items %}
+                    <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+            </label>
+        </form>
+    </div>
+{% endblock %}
