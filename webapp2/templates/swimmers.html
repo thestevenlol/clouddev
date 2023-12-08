@@ -3,16 +3,17 @@
 {% block body %}
 <h1>Select a Swimmer</h1>
     <div id="form_container">
-        <form method="post" action="/get_events">
-            <label>
-            <span>Choose a Swimmer</span>
-            <select id="itemSelect" name="swimmer">
+        <label>
+            <select id="swimmerSelect" name="swimmer">
                 {% for item in items %}
                     <option value="{{ item }}">{{ item }}</option>
                 {% endfor %}
             </select>
-            <button type="submit">Submit</button>
-            </label>
-        </form>
+            <button hx-post="/get_events" hx-target="#next2"
+                    hx-vals='js:{swimmer: document.getElementById("swimmerSelect").value}'>
+                Submit
+            </button>
+        </label>
     </div>
+    <div id="next2"></div>
 {% endblock %}

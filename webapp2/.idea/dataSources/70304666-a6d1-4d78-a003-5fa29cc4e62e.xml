@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="SwimclubDB@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.49">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.51">
     <root id="1">
       <DefaultCasing>exact</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -1033,8 +1033,7 @@ SwimclubDB|schema||swimuser|localhost|UPDATE|G</Grants>
     </collation>
     <schema id="324" parent="1" name="SwimclubDB">
       <Current>1</Current>
-      <IntrospectionTimestamp>2023-12-06.13:33:01</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-12-06.13:33:01</LocalIntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2023-12-06.13:33:01</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="325" parent="1" name="information_schema">
