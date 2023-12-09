@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Select an Event</h1>
+    <div id="form_container">
+        <label>
+            <select id="eventSelect" name="event">
+                {% for item in items %}
+                    <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+            <button hx-post="/get_chart" hx-target="#next3"
+                    hx-vals='js:{event: document.getElementById("eventSelect").value}'>
+                Submit
+            </button>
+        </label>
+    </div>
+    <div id="next3"></div>
+{% endblock %}

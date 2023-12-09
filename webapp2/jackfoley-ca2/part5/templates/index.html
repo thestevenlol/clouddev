@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Select a Swim Session</h1>
+    <div id="form_container">
+        <label>
+            <select id="dateSelect" name="date">
+                {% for item in items %}
+                    <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+            <button hx-post="/get_swimmers" hx-target="#next"
+                    hx-vals='js:{date: document.getElementById("dateSelect").value}'>
+                Submit
+            </button>
+        </label>
+    </div>
+    <div id="next"></div>
+{% endblock %}
